@@ -1,3 +1,16 @@
+@font-face {
+    font-family: "BIKES";
+    src: url("../fonts/BIKES.otf") format("opentype"),
+    url("../fonts/BIKES.ttf") format("truetype");
+}
+
+body {
+    font-family: "Arial Narrow", serif;
+}
+
+h1 {
+    font-family: BIKES;
+}
 p {
     border : red 2px solid;
 }
