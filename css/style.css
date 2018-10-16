@@ -11,28 +11,25 @@ body {
 h1 {
     font-family: BIKES;
 }
-p {
-    border : red 2px solid;
-}
+/*
+ ====================================== SLIDER ===============================================
+ */
 #imgSlider {
     /* ... */
     margin-left: -20px; /* Simplifie le calcul des positions initiale et finale du bloc */
-    animation-name: deplacerBloc; /* Nom de l'animation */
+    animation-name: testAnim; /* Nom de l'animation */
     animation-duration: 6s; /* Durée de l'animation */
     animation-fill-mode: forwards; /* Laisse le bloc dans sa position finale */
 }
 
-@keyframes deplacerBloc {
+@keyframes testAnim {
     0% {
-        /* Position initiale : bord gauche du cadre (en tenant compte de la marge négative) */
         border: 3px solid red;
     }
     50% {
-        /* Position finale : bord droit du cadre (en tenant compte de la marge négative) */
         border: 3px solid yellow;
     }
     100% {
-        /* Position initiale : bord gauche du cadre (en tenant compte de la marge négative) */
         border: 3px solid red;
     }
 }
@@ -63,4 +60,60 @@ p {
 }
 #arrowLeft:hover, #arrowRight:hover {
     background: rgba(255,225,225,0.8);
+}
+figcaption {
+    text-align: center;
+    width: 100%;
+    background: darkseagreen;
+}
+/*
+    =========================== 2nd part ================================
+ */
+#part2 {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+/*
+ =========================== MAP ========================
+ */
+#map {
+    width: 74%;
+    border: 1px yellow solid;
+}
+#map iframe {
+    width: 100%;
+}
+/*
+ =========================== FORM ========================
+ */
+#form {
+    width: 25%;
+    border: 1px green solid;
+}
+#form fieldset {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input {
+    display : flex;
+    flex-direction: row;
+    justify-content: start;
+    align-content: center;
+}
+
+.input label {
+    width: 80px;
+}
+.input input {
+    width: 80%;
+}
+#réserver {
+    text-align: center;
+    margin:auto;
 }
