@@ -30,3 +30,42 @@ slider.init(dataSLider, imgSliderElt, figcaptionSliderElt, arrowLeftElt, arrowRi
 =================================== GESTION DE LA SUITE =================================
 */
 console.log("test");
+/*
+======================= MAP LEAFLET INSTANCIATION ======================
+ */
+var myIcon = L.icon({
+    iconUrl: './img/bikeIcon.png',
+    iconSize: [38, 60],
+    iconAnchor: [22, 59],
+    popupAnchor: [-3, -59],
+    shadowUrl: './img/bikeIconShadow.png',
+    shadowSize: [68, 60],
+    shadowAnchor: [22, 59]
+});
+var mymap = L.map('mapid').setView([45.758890, 4.841390], 13);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiZGlhbmFib3VkeSIsImEiOiJjam5jNTJnY3kydDI1M2tydW9hY3M3Y2UwIn0.-_lVVTPD35gJXJg-jUZ9DA'
+}).addTo(mymap);
+var marker = L.marker([45.758890, 4.841390],{icon: myIcon}).addTo(mymap);
+marker.bindPopup("<b>Station name</b>").openPopup();
+var popup = L.popup();
+function onMapClick(e) {
+    console.log("click on map");
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(mymap);
+}
+function testClickMarker() {
+    console.log("clic sur un marqueur");
+}
+mymap.on('click', onMapClick);
+marker.on('click', testClickMarker);
+
+/*
+====================== INTEGRATION API JC DECAUX =======================
+ */

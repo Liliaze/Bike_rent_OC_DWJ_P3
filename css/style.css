@@ -79,13 +79,14 @@ figcaption {
 /*
  =========================== MAP ========================
  */
-#map {
+#mapid {
     width: 74%;
     border: 1px yellow solid;
-}
-#map iframe {
+    height: 350px;
+}/*
+#mapid iframe {
     width: 100%;
-}
+}*/
 /*
  =========================== FORM ========================
  */

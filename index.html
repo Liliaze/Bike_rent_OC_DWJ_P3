@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+            integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+            crossorigin=""></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" media="all and (max-width: 1024px)" href="css/little_screen.css"/>
     <title>rentABike</title>
@@ -18,10 +25,11 @@
     <img id="arrowRight" class="slider" src="./img/arrowRight.png" alt="Une flêche vers la droite">
 </div>
 <div id="part2">
-    <div id="map">
-        <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=4.76059913635254%2C45.729730286141255%2C4.8738956451416025%2C45.78446445616189&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=14/45.7571/4.8172">Afficher une carte plus grande</a></small>
+    <div id="mapid">
+        <!--<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=4.76059913635254%2C45.729730286141255%2C4.8738956451416025%2C45.78446445616189&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=14/45.7571/4.8172">Afficher une carte plus grande</a></small>-->
     </div>
     <div id="form">
+        <i class="fas fa-map-marker-alt"></i>
         <form><fieldset>
             <legend>Détails de la station...</legend>
             <p>
