@@ -1,0 +1,4 @@
+#arrowLeft, #arrowRight {
+    top: calc(50% - 40px);
+    min-width:50px;
+}

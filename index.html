@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" media="all and (max-width: 1024px)" href="css/little_screen.css"/>
     <title>rentABike</title>
 </head>
 <body>
 <h1>VELO vélo</h1>
 <p>Hello</p>
-<div id="slider">
-    <figure id="figureSlider">
-        <img id="imgSlider" src="img/slide1.png" alt="slider description fonctionnement de la page">
+<div id="slider" class="slider">
+    <img id="arrowLeft" class="slider" src="./img/arrowLeft.png" alt="Une flêche vers la gauche">
+    <figure id="figureSlider" class ="slider">
+        <img id="imgSlider" class="slider" src="img/slide1.png" alt="slider description fonctionnement de la page">
         <figcaption id="figcaptionSlider">Essaie premiere image</figcaption>
     </figure>
+    <img id="arrowRight" class="slider" src="./img/arrowRight.png" alt="Une flêche vers la droite">
 </div>
 
 <script type="text/javascript" src="js/Slide.js"></script>
+<script type="text/javascript" src="js/Slider.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

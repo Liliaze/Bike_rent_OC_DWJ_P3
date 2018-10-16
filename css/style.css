@@ -14,3 +14,53 @@ h1 {
 p {
     border : red 2px solid;
 }
+#imgSlider {
+    /* ... */
+    margin-left: -20px; /* Simplifie le calcul des positions initiale et finale du bloc */
+    animation-name: deplacerBloc; /* Nom de l'animation */
+    animation-duration: 6s; /* Durée de l'animation */
+    animation-fill-mode: forwards; /* Laisse le bloc dans sa position finale */
+}
+
+@keyframes deplacerBloc {
+    0% {
+        /* Position initiale : bord gauche du cadre (en tenant compte de la marge négative) */
+        border: 3px solid red;
+    }
+    50% {
+        /* Position finale : bord droit du cadre (en tenant compte de la marge négative) */
+        border: 3px solid yellow;
+    }
+    100% {
+        /* Position initiale : bord gauche du cadre (en tenant compte de la marge négative) */
+        border: 3px solid red;
+    }
+}
+#slider {
+    position:relative;
+    width: 100%;
+    margin:0;
+    padding:0;
+}
+#figureSlider, #imgSlider, #figcaptionSlider {
+    margin:0;
+    padding: 0;
+    width: 100%;
+}
+#arrowLeft, #arrowRight{
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(125,125,125,0.5);
+    top:45%;
+    width: 5%;
+    origin: center;
+}
+#arrowLeft {
+    left:0;
+}
+#arrowRight {
+    right: 0;
+}
+#arrowLeft:hover, #arrowRight:hover {
+    background: rgba(255,225,225,0.8);
+}
