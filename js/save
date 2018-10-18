@@ -1,0 +1,45 @@
+    <div id="mapid">
+    </div>
+    <div id="divForm">
+        <i class="fas fa-map-marker-alt"></i>
+        <form id="form"><fieldset>
+            <legend>Détails de la station...</legend>
+            <p>
+                Adresse : A défnir
+            </p>
+            <p>
+               00 places
+            </p>
+            <p>
+                0 vélos disponible
+            </p>
+            <p class="input">
+                <label for="name">Nom :</label>
+                <input type="text" name="name" id="name" placeholder="nom" value="nom" autofocus required>
+            </p>
+            <p class="input">
+                <label for="firstName">Prénom :</label>
+                <input type="text" name="firstName" id="firstName" placeholder="prénom" value="prénom" required>
+            </p>
+            <input id="réserver" type="submit" value="Réserver" />
+        </fieldset></form>
+    </div>
+
+
+var myIcon = L.icon({
+    iconUrl: './img/bikeIcon.png',
+    iconSize: [38, 60],
+    iconAnchor: [22, 59],
+    popupAnchor: [-3, -59],
+    shadowUrl: './img/bikeIconShadow.png',
+    shadowSize: [68, 60],
+    shadowAnchor: [22, 59]
+});
+var mymap = L.map('mapid').setView([45.758890, 4.841390], 13);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiZGlhbmFib3VkeSIsImEiOiJjam5jNTJnY3kydDI1M2tydW9hY3M3Y2UwIn0.-_lVVTPD35gJXJg-jUZ9DA'
+}).addTo(mymap);

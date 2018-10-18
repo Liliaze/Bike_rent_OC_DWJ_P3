@@ -1,5 +1,7 @@
 var Slider = {
     init : function(data, imgElt, figElt, arrLeftElt, arrRightElt) {
+        //// Modification du contenu HTML de la liste : ajout d'un langage
+        // document.getElementById("langages").innerHTML += '<li id="c">C</li>';
         othis = this;
         if (imgElt === null || figElt === null || arrLeftElt === null || arrRightElt === null) {
             console.log("ERREUR un des éléments nécessaires à la création de l'objet Slider est null");
@@ -80,7 +82,6 @@ var Slider = {
       othis.delay = newDelay;
     },
     launchAnim: function() {
-        console.log("this.delay" + othis.delay);
         othis.intervalAnimSlider = setInterval('othis.slideAfter()', othis.delay);
         console.log("appel à After démarré");
     },

@@ -53,10 +53,10 @@ h1 {
     origin: center;
 }
 #arrowLeft {
-    left:0;
+    left: 5px;
 }
 #arrowRight {
-    right: 0;
+    right: 5px;
 }
 #arrowLeft:hover, #arrowRight:hover {
     background: rgba(255,225,225,0.8);
@@ -90,11 +90,11 @@ figcaption {
 /*
  =========================== FORM ========================
  */
-#form {
+#divForm {
     width: 25%;
     border: 1px green solid;
 }
-#form fieldset {
+#divForm fieldset {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
