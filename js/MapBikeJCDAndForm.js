@@ -28,6 +28,7 @@ var JCD = {
             '    <div id="mapId">\n' +
             '    </div>\n' +
             '    <div id="divForm">\n' +
+            '        <i class="fas fa-map-marker-alt"></i>\n' +
             '        <form id="form"><fieldset>\n' +
             '            <legend>Détails de la station...</legend>\n' +
             '            <p id="address">\n' +
