@@ -6,10 +6,16 @@
 
 body {
     font-family: "Arial Narrow", serif;
+    font-size: calc(12px + 0.8vw);
+}
+form input {
+    font-family: "Arial Narrow", serif;
+    font-size: calc(12px + 0.8vw);
 }
 
 h1 {
     font-family: BIKES;
+    text-align: center;
 }
 /*
  ====================================== SLIDER ===============================================
@@ -79,20 +85,17 @@ figcaption {
 /*
  =========================== MAP ========================
  */
-#mapid {
-    width: 74%;
-    border: 1px yellow solid;
-    height: 350px;
-}/*
-#mapid iframe {
+#mapId {
     width: 100%;
-}*/
-/*
+    border: 1px yellow solid;
+    height: 600px;
+}
  =========================== FORM ========================
  */
 #divForm {
-    width: 25%;
-    border: 1px green solid;
+    display:none;
+    width: 0%;
+    height: 600px;
 }
 #divForm fieldset {
     border-radius: 10px;
@@ -109,7 +112,7 @@ figcaption {
 }
 
 .input label {
-    width: 80px;
+    width: calc(100px + 0.8vw);
 }
 .input input {
     width: 80%;
