@@ -24,7 +24,7 @@ slider.init(dataSLider, "slider");
 ====================== INTEGRATION API JC DECAUX MAP + FORM ==========================
  */
 var apiJCD = Object.create(JCD);
-apiJCD.init("Lyon", "part2");
+apiJCD.init("Lyon", "part2", "canvas");
 
 /*
 ================================ END MAIN SCRIPT ================================

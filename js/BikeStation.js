@@ -1,7 +1,7 @@
 var BikeStation = {
     init: function (data) {
-        this.name = data.name;
-        this.address = data.address;
+        this.name = data.name.toLowerCase();
+        this.address = data.address.toLowerCase();
         this.nbBikesStands = data.bike_stands;
         this.availableBikesStand = data.available_bike_stands;
         this.availableBikes = data.available_bikes;

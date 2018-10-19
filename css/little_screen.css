@@ -5,20 +5,18 @@
 #part2 {
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: space-between;
     align-content: center;
 }
 #mapId {
     width: 100%;
-    border: 1px yellow solid;
     height: 600px;
 }
 #divForm {
     display:none;
     width: 100%;
     height: 600px;
-    border: 1px green solid;
 }
 #divForm fieldset {
     border-radius: 10px;

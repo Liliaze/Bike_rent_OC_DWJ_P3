@@ -123,3 +123,10 @@ figcaption {
     text-align: center;
     margin:auto;
 }
+/*
+ ===================== CANVAS =====================================
+ */
+canvas { border: 1px solid #ccc;}
+#finalText {
+    text-align: center;
+}

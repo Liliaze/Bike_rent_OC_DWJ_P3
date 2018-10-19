@@ -1,7 +1,7 @@
 var Slider = {
-    init : function(data, divImgElt) {
+    init : function(data, divImageId) {
         othis = this;
-        othis.addHTMLInDiv(divImgElt);
+        othis.addHTMLInDiv(divImageId);
         othis.currentIndex = 0;
         othis.delay = 5000;
         othis.imgElt = document.getElementById("imgSlider");
@@ -16,8 +16,8 @@ var Slider = {
         this.launchAnim();
         othis.startEventOnSlider();
     },
-    addHTMLInDiv: function(divImgElt) {
-        document.getElementById(divImgElt).innerHTML +=
+    addHTMLInDiv: function(divImgId) {
+        document.getElementById(divImgId).innerHTML +=
             '    <img id="arrowLeft" class="slider" src="./img/arrowLeft.png" alt="Une flêche vers la gauche">\n' +
             '    <figure id="figureSlider" class ="slider">\n' +
             '        <img id="imgSlider" class="slider" src="img/slide1.png" alt="slider description fonctionnement de la page">\n' +
@@ -31,6 +31,14 @@ var Slider = {
         slide.describe();
         othis.slider.push(slide);
       },
+    launchAnim: function() {
+        othis.intervalAnimSlider = setInterval('othis.slideAfter()', othis.delay);
+        console.log("appel à After démarré");
+    },
+    stopAnim: function() {
+        clearInterval(othis.intervalAnimSlider);
+        console.log("animation stoppé");
+    },
     describe: function() {
         othis.slider.forEach(function (s) {
             console.log(s.describe());
@@ -53,7 +61,6 @@ var Slider = {
         othis.changeDataSlide();
     },
     keyPress: function(e) {
-        console.log("keyCode = " + e.keyCode)
         if (e.keyCode == 39){
             othis.slideAfter();
         }
@@ -86,14 +93,7 @@ var Slider = {
     setDelay: function(newDelay) {
       othis.delay = newDelay;
     },
-    launchAnim: function() {
-        othis.intervalAnimSlider = setInterval('othis.slideAfter()', othis.delay);
-        console.log("appel à After démarré");
-    },
-    stopAnim: function() {
-        clearInterval(othis.intervalAnimSlider);
-        console.log("animation stoppé");
-    },
+
     testEnd: function () {
         console.log("CLICK, CLICK !!!!!!!!!!");
     },
