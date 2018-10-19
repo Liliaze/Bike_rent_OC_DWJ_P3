@@ -176,7 +176,8 @@ var JCD = {
         }
         else {
             clearInterval(jcdThis.intervalAnimTextFinal);
-            reservationText.textContent = "";
+            reservationText1.textContent = "";
+            reservationText2.textContent = "";
         }
     },
     resizeWindow: function() {
