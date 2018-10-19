@@ -1,4 +1,4 @@
-"use strict";
+"use strict";/*
 console.log("Hello_test");
 window.addEventListener("beforeunload", function (e) {
     //AJOUTER UNE CONDITION : SI IL RESTE UNE RESERVATION : RISQUE DE PERTE
@@ -6,7 +6,7 @@ window.addEventListener("beforeunload", function (e) {
     var message = "On est bien ici !";
     e.returnValue = message; // Provoque une demande de confirmation (standard)
     return message; // Provoque une demande de confirmation (certains navigateurs)
-});
+});*/
 /*
 ====================== INTEGRATION DU SLIDER =====================
  */

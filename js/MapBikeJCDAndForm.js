@@ -7,7 +7,7 @@ var JCD = {
         jcThis.stations = [];
         jcThis.contractName = contractName;
         jcThis.currentStation = null;
-        jcThis.delay = 10000;
+        //jcThis.delay = 100000;
         jcThis.lastTimeDataUpdate = 0;
         jcThis.newTimeDataUpdate = 0;
         apiJCD.getContractInfo(contractName);
@@ -18,7 +18,7 @@ var JCD = {
         jcThis.nbStandsElt = document.getElementById("nbStands");
         jcThis.nbBikesElt = document.getElementById("nbBikes");
         window.addEventListener("resize", jcThis.resizeWindow);
-        this.launchUpdate();
+        //this.launchUpdate();
     },
     /*
     ajout de l'HTML pour la map liée au contractName et le formulaire dans la div demandée.
@@ -66,7 +66,7 @@ var JCD = {
             shadowAnchor: [22, 59]
         });
         jcThis.icon = myIcon;
-        var mymap = L.map('mapId').setView([45.758890, 4.841390], 13);
+        var mymap = L.map('mapId').setView([45.758890, 4.841390], 13); // a changer !!!
         jcThis.mapId = mymap;
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -76,8 +76,8 @@ var JCD = {
         }).addTo(mymap);
     },
     /*
-    ================================ FONCTIONS EVENEMENTIELS ============================
-     */
+    ================================ FONCTIONS EVENEMENTIELLES ============================
+     *//*
     saveNewDataTimeUpdate: function(reponse) {
         //console.log("reponse[0]= " + reponse[0].last_update + " VS " + jcThis.lastTimeDataUpdate);
         jcThis.newDataTimeUpdate = reponse[0].last_update;
@@ -86,13 +86,13 @@ var JCD = {
       ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract="+jcThis.contractName+"&apiKey=27ee320d96a32823835e7c985c3f2d6b5c4fc37d", jcThis.saveNewDataTimeUpdate);
       if (jcThis.newDataTimeUpdate > jcThis.lastTimeDataUpdate)
       {
-          console.log("REFRESH !!!!!!!!!!!!!!");
+          console.log("REFRESH !!!!!!!!!!!!!!"); // DEBUG
           apiJCD.getContractInfo(jcThis.contractName);
       }
     },
     launchUpdate: function() {
         jcThis.updateData = setInterval('jcThis.updateDataTime()', jcThis.delay);
-    },
+    },*/
     resizeWindow: function() {
         if (jcThis.currentStation === null) {
             return;
