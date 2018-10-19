@@ -3,6 +3,11 @@ var Canvas = {
         cthis = this;
         cthis.canvasElt = this.addCanvasInDIv(canvasDivId);
         cthis.ctx = this.canvasElt.getContext('2d');
+        cthis.imagePencil = new Image();
+        cthis.imagePencil.onload = e => cthis.ctx.drawImage(cthis.imagePencil, 5, 5, 50, 50);
+        cthis.ctx.font="14px Georgia";
+        cthis.ctx.fillText("Signature!",5,72);
+        cthis.imagePencil.src = "./img/pencil.png";;
         cthis.isDrawing = false;
         cthis.eventCanvas();
     },
