@@ -1,24 +1,29 @@
 var Slider = {
-    init : function(data, imgElt, figElt, arrLeftElt, arrRightElt) {
-        //// Modification du contenu HTML de la liste : ajout d'un langage
-        // document.getElementById("langages").innerHTML += '<li id="c">C</li>';
+    init : function(data, divImgElt) {
         othis = this;
-        if (imgElt === null || figElt === null || arrLeftElt === null || arrRightElt === null) {
-            console.log("ERREUR un des éléments nécessaires à la création de l'objet Slider est null");
-        }
+        othis.addHTMLInDiv(divImgElt);
         othis.currentIndex = 0;
         othis.delay = 5000;
-        othis.imgElt = imgElt;
+        othis.imgElt = document.getElementById("imgSlider");
         othis.imgElt.style.opacity = 1;
-        othis.figElt = figElt;
-        othis.arrowLeftElt = arrLeftElt;
-        othis.arrowRightElt = arrRightElt;
+        othis.figElt = document.getElementById("figcaptionSlider");
+        othis.arrowLeftElt = document.getElementById("arrowLeft");
+        othis.arrowRightElt = document.getElementById("arrowRight");
         othis.slider = [];
         for (i = 0; i < data.length; i++) {
             othis.addSlide(data[i].src, data[i].alt, data[i].description);
         };
         this.launchAnim();
         othis.startEventOnSlider();
+    },
+    addHTMLInDiv: function(divImgElt) {
+        document.getElementById(divImgElt).innerHTML +=
+            '    <img id="arrowLeft" class="slider" src="./img/arrowLeft.png" alt="Une flêche vers la gauche">\n' +
+            '    <figure id="figureSlider" class ="slider">\n' +
+            '        <img id="imgSlider" class="slider" src="img/slide1.png" alt="slider description fonctionnement de la page">\n' +
+            '        <figcaption id="figcaptionSlider">Essaie premiere image</figcaption>\n' +
+            '    </figure>\n' +
+            '    <img id="arrowRight" class="slider" src="./img/arrowRight.png" alt="Une flêche vers la droite">';
     },
     addSlide: function(src, alt, description) {
         var slide = Object.create(Slide);

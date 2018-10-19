@@ -17,15 +17,9 @@ var dataSLider = [{src:"./img/slide1.png", alt:"Etape 1 du fonctionnement du sit
     {src:"./img/slide3.png", alt:"Etape 3 du fonctionnement du site", description:"Figcaption étape 3"},
     {src:"./img/slide4.png", alt:"Etape 4 du fonctionnement du site", description:"Figcaption étape 4"}];
 
-//récupération des éléments du dom lié au slider
-var imgSliderElt = document.getElementById("imgSlider");
-var figcaptionSliderElt = document.getElementById("figcaptionSlider");
-var arrowLeftElt = document.getElementById("arrowLeft");
-var arrowRightElt = document.getElementById("arrowRight");
-
 //Création du slider
 var slider = Object.create(Slider);
-slider.init(dataSLider, imgSliderElt, figcaptionSliderElt, arrowLeftElt, arrowRightElt);
+slider.init(dataSLider, "slider");
 /*
 ====================== INTEGRATION API JC DECAUX MAP + FORM ==========================
  */

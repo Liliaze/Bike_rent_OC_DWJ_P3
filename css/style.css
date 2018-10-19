@@ -22,6 +22,7 @@ h1 {
  */
 #imgSlider {
     /* ... */
+    width:100%;
     margin-left: -20px; /* Simplifie le calcul des positions initiale et finale du bloc */
     animation-name: testAnim; /* Nom de l'animation */
     animation-duration: 6s; /* Durée de l'animation */

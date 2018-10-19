@@ -83,12 +83,6 @@ var JCD = {
         jcThis.newDataTimeUpdate = reponse[0].last_update;
     },
     updateDataTime: function () {
-      /*if (jcThis.currentStation == null)
-          jcThis.divForm.style.display = none;
-      else
-          jcThis.divForm.style.display = block;*/
-
-      //console.log("TRY!!!!!!!!!!!!!!");
       ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract="+jcThis.contractName+"&apiKey=27ee320d96a32823835e7c985c3f2d6b5c4fc37d", jcThis.saveNewDataTimeUpdate);
       if (jcThis.newDataTimeUpdate > jcThis.lastTimeDataUpdate)
       {
@@ -100,6 +94,9 @@ var JCD = {
         jcThis.updateData = setInterval('jcThis.updateDataTime()', jcThis.delay);
     },
     resizeWindow: function() {
+        if (jcThis.currentStation === null) {
+            return;
+        }
         var screenWidth = (document.body.clientWidth);
         var screenHeight = (document.body.clientHeight);
         if (screenWidth > 1024) {
@@ -113,10 +110,9 @@ var JCD = {
     },
     clickOnMarker: function(station) {
         jcThis.divForm.style.display = "block";
-        jcThis.resizeWindow();
-        console.log("clic sur un marqueur : " + station.name);
         jcThis.currentStation = station;
         jcThis.displayDataInForm();
+        jcThis.resizeWindow();
     },
     /*
     ============================ TRAITEMENT DES DONNEES DE LA REQUETE / LANCEMENT EVENEMENTIEL ============================
