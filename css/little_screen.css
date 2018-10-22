@@ -1,9 +1,12 @@
-#arrowLeft, #arrowRight {
+#slider {
+    width: 100%;
+}
+#arrowLeft, #arrowRight, #pauseButton, #playButton {
     top: calc(50% - 40px);
-    min-width:50px;
+    min-width:30px;
 }
 #part2 {
-    margin-top: 20px;
+    width: 100%;
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
@@ -11,12 +14,11 @@
 }
 #mapId {
     width: 100%;
-    height: 600px;
+    height: 500px;
 }
 #divForm {
     display:none;
     width: 100%;
-    height: 600px;
 }
 #divForm fieldset {
     border-radius: 10px;
@@ -33,7 +35,7 @@
 }
 
 .input label {
-    width: calc(100px + 0.8vw);
+    width: calc(100px + 0.6vw);
 }
 .input input {
     width: 80%;

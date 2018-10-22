@@ -6,11 +6,11 @@
 
 body {
     font-family: "Arial Narrow", serif;
-    font-size: calc(12px + 0.8vw);
+    font-size: calc(12px + 0.6vw);
 }
 form input {
     font-family: "Arial Narrow", serif;
-    font-size: calc(12px + 0.8vw);
+    font-size: calc(12px + 0.6vw);
 }
 
 h1 {
@@ -20,15 +20,14 @@ h1 {
 /*
  ====================================== SLIDER ===============================================
  */
+/*
 #imgSlider {
-    /* ... */
     width:100%;
-    margin-left: -20px; /* Simplifie le calcul des positions initiale et finale du bloc */
-    animation-name: testAnim; /* Nom de l'animation */
-    animation-duration: 6s; /* Durée de l'animation */
-    animation-fill-mode: forwards; /* Laisse le bloc dans sa position finale */
+    margin-left: -20px;
+    animation-name: testAnim;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
 }
-
 @keyframes testAnim {
     0% {
         border: 3px solid red;
@@ -39,19 +38,18 @@ h1 {
     100% {
         border: 3px solid red;
     }
-}
+}*/
 #slider {
     position:relative;
-    width: 100%;
-    margin:0;
-    padding:0;
+    margin: auto;
+    width: 80%;
 }
 #figureSlider, #imgSlider, #figcaptionSlider {
     margin:0;
     padding: 0;
     width: 100%;
 }
-#arrowLeft, #arrowRight{
+#arrowLeft, #arrowRight, #pauseButton, #playButton{
     position: absolute;
     border-radius: 50%;
     background: rgba(125,125,125,0.5);
@@ -59,14 +57,18 @@ h1 {
     width: 5%;
     origin: center;
 }
+
 #arrowLeft {
     left: 5px;
 }
 #arrowRight {
     right: 5px;
 }
-#arrowLeft:hover, #arrowRight:hover {
+#arrowLeft:hover, #arrowRight:hover, #pauseButton:hover, #playButton:hover {
     background: rgba(255,225,225,0.8);
+}
+#pauseButton, #playButton {
+    left: 47%;
 }
 figcaption {
     text-align: center;
@@ -77,7 +79,8 @@ figcaption {
     =========================== 2nd part ================================
  */
 #part2 {
-    margin-top: 20px;
+    width: 82%;
+    margin: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -89,15 +92,16 @@ figcaption {
 #mapId {
     width: 100%;
     border: 1px yellow solid;
-    height: 600px;
+    height: 500px;
+    margin: 1%;
 }
 /*
  =========================== FORM ========================
  */
 #divForm {
     display:none;
-    width: 0%;
-    height: 600px;
+    width: 0;
+    margin: 1%;
 }
 #divForm fieldset {
     border-radius: 10px;
@@ -105,6 +109,9 @@ figcaption {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+p {
+    margin : 10px auto 8px auto;
 }
 .input {
     display : flex;
@@ -114,7 +121,7 @@ figcaption {
 }
 
 .input label {
-    width: calc(100px + 0.8vw);
+    width: calc(100px + 0.6vw);
 }
 .input input {
     width: 80%;

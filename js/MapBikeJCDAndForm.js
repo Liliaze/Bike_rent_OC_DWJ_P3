@@ -10,13 +10,16 @@ var JCD = {
         jcdThis.canvas = Object.create(Canvas);
         jcdThis.canvas.init("canvasId");
         jcdThis.canvas.canvasElt.style.display = "none";
+        jcdThis.booking = false;
         //LANCEMENT REQUETE JCD ET TRAITEMENT DES DONNEES
         jcdThis.currentStation = null;
+        jcdThis.bookingStation = null;
         jcdThis.contractName = contractName;
         apiJCD.getContractInfo(contractName);
         //AJOUT EVENEMENTIEL
         window.addEventListener("resize", jcdThis.resizeWindow);
         submitForm.addEventListener("click", jcdThis.clickOnSubmit);
+        jcdThis.displayBooking();
     },
     /*
     ajout de l'HTML pour la map liée au contractName et le formulaire dans la div demandée.
@@ -26,8 +29,7 @@ var JCD = {
             '    <div id="mapId">\n' +
             '    </div>\n' +
             '    <div id="divForm">\n' +
-            '        <i class="fas fa-map-marker-alt"></i>\n' +
-            '        <form id="form"><fieldset>\n' +
+            '        <form id="form"><fieldset id="fieldsetForm">\n' +
             '            <legend>Détails de la station...</legend>\n' +
             '            <p id="statusP">\n' +
             '                Status\n' +
@@ -57,6 +59,17 @@ var JCD = {
             '            </div>\n' +
             '        </fieldset></form>\n' +
             '    </div>';
+        jcdThis.createButtonConfirm();
+    },
+
+    createButtonConfirm: function () {
+        var buttonConfirm = document.createElement("input");
+        buttonConfirm.type = "submit";
+        buttonConfirm.id = "buttonConfirm";
+        buttonConfirm.value = "Confirmer la réservation";
+        fieldsetForm.appendChild(buttonConfirm);
+        buttonConfirm.addEventListener("click", jcdThis.clickOnSubmitSecond);
+        buttonConfirm.style.display = "none";
     },
     /*
     ============================== REQUETE AUPRES DE JC DECAUX ==============================
@@ -147,38 +160,67 @@ var JCD = {
     clickOnSubmit: function (event) {
         event.preventDefault();
         console.log("CLISKC CLISCK = " + this.id + "!!!!!");
-        jcdThis.canvas.canvasElt.style.display = "inline";
-        submitForm.style.display = "none";
-        var buttonConfirm = document.createElement("input");
-        buttonConfirm.type = "submit";
-        buttonConfirm.id = "buttonConfirm";
-        buttonConfirm.value = "Confirmer la réservation";
-        canvasId.appendChild(buttonConfirm);
-        buttonConfirm.addEventListener("click", jcdThis.clickOnSubmitSecond);
-    },
-    clickOnSubmitSecond: function (event) {
-        event.preventDefault();
-        console.log("CLISKC CLISCK SECOND  = " + this.id + "!!!!!");
-        var reservationText1 = document.createElement("p");
-        reservationText1.id = "reservationText1";
-        var reservationText2 = document.createElement("p");
-        reservationText2.id = "reservationText2";
-        finalText.appendChild(reservationText1);
-        finalText.appendChild(reservationText2);
-        jcdThis.timeToReservation = 1200; //soit 20 minutes en milliseconds
-        jcdThis.intervalAnimTextFinal = setInterval('jcdThis.updateFinalText()', 1e3);
-    },
-    updateFinalText: function() {
-        jcdThis.timeToReservation -= 1;
-        if (jcdThis.timeToReservation > 0) {
-            reservationText1.textContent = "Vélo réservé à la station " + jcdThis.currentStation.name + " par " + firstNameInput.value + " " + nameInput.value;
-            reservationText2.textContent = "Temps restants : " + Math.trunc(jcdThis.timeToReservation / 60) + " min " + jcdThis.timeToReservation % 60 + "s";
+        if (jcdThis.currentStation.status === "OPEN" && jcdThis.currentStation.availableBikes > 0) {
+            jcdThis.canvas.canvasElt.style.display = "block";
+            buttonConfirm.style.display = "block";
+            submitForm.style.display = "none";
         }
         else {
-            clearInterval(jcdThis.intervalAnimTextFinal);
-            reservationText1.textContent = "";
-            reservationText2.textContent = "";
+            alert("Réservation à cette station impossible, please choose an other\nSTATUS = " + jcdThis.currentStation.status + ", pas de vélo disponible" );
         }
+    },
+    clickOnSubmitSecond: function (event) {
+        if(sessionStorage.getItem('booking') === 'true')
+            jcdThis.cancelPreviousBooking();
+        event.preventDefault();
+        jcdThis.bookingInfo();
+        submitForm.style.display = "block";
+        jcdThis.canvas.canvasElt.style.display = "none";
+        buttonConfirm.style.display = "none";
+        jcdThis.displayBooking();
+
+    },
+    displayBooking: function() {
+        if (sessionStorage.getItem('booking') === 'true'){
+            var bookingText1 = document.createElement("p");
+            bookingText1.id = "bookingText1";
+            var bookingText2 = document.createElement("p");
+            bookingText2.id = "bookingText2";
+            finalText.appendChild(bookingText1);
+            finalText.appendChild(bookingText2);
+            jcdThis.intervalAnimTextFinal = setInterval('jcdThis.updateFinalText()', 1e3);
+        }
+        nameInput.value = localStorage.getItem('clientName');
+        firstNameInput.value = localStorage.getItem('clientFirstName');
+    },
+    updateFinalText: function() {
+        var time = sessionStorage.getItem('timeToBooking');
+        time -= 1;
+        sessionStorage.setItem('timeToBooking', time);
+        if (time > 0) {
+            bookingText1.textContent = "Vélo réservé à la station " + sessionStorage.getItem('nameStation') + " par " + localStorage.getItem('clientFirstName') + " " + localStorage.getItem('clientName');
+            bookingText2.textContent = "Temps restants : " + Math.trunc(time / 60) + " min " + time % 60 + "s";
+        }
+        else {
+            jcdThis.cancelPreviousBooking();
+        }
+    },
+    bookingInfo: function() {
+        jcdThis.bookingStation = jcdThis.currentStation;
+        jcdThis.booking = true;
+        sessionStorage.setItem('booking', 'true');
+        sessionStorage.setItem('nameStation', jcdThis.bookingStation.name);
+        sessionStorage.setItem('timeToBooking', '1200');
+        localStorage.setItem('clientName', nameInput.value);
+        localStorage.setItem('clientFirstName', firstNameInput.value);
+    },
+    cancelPreviousBooking: function() {
+        clearInterval(jcdThis.intervalAnimTextFinal);
+        finalText.removeChild(bookingText1);
+        finalText.removeChild(bookingText2);
+        sessionStorage.setItem('booking', 'false');
+        sessionStorage.removeItem('timeToBooking');
+        jcdThis.bookingStation = null;
     },
     resizeWindow: function() {
         if (!jcdThis.first)
