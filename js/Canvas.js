@@ -37,5 +37,5 @@ var Canvas = {
     },
     canvasDrawStop: function () {
         cthis.isDrawing = false;
-    },
+    }
 };

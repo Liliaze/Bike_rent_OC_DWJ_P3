@@ -1,3 +1,6 @@
+body, p {
+    font-size: 18px;
+}
 #slider {
     width: 100%;
 }
@@ -35,7 +38,7 @@
 }
 
 .input label {
-    width: calc(100px + 0.6vw);
+    width: 20%;
 }
 .input input {
     width: 80%;

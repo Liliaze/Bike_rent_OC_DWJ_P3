@@ -12,10 +12,10 @@ window.addEventListener("beforeunload", function (e) {
  */
 
 //Données du slider
-var dataSLider = [{src:"./img/slide1.png", alt:"Etape 1 du fonctionnement du site", description:"Figcaption étape 1"},
-    {src:"./img/slide2.png", alt:"Etape 2 du fonctionnement du site", description:"Figcaption étape 2"},
-    {src:"./img/slide3.png", alt:"Etape 3 du fonctionnement du site", description:"Figcaption étape 3"},
-    {src:"./img/slide4.png", alt:"Etape 4 du fonctionnement du site", description:"Figcaption étape 4"}];
+var dataSLider = [{src:"./img/slide1.png", alt:"Etape 1 du fonctionnement du site", description:"Choisissez votre station de vélo"},
+    {src:"./img/slide2.png", alt:"Etape 2 du fonctionnement du site", description:"Entrez vos nom et prénom puis cliquez sur 'réserver'"},
+    {src:"./img/slide3.png", alt:"Etape 3 du fonctionnement du site", description:"Signer dans le champs libre puis confirmez la réservation "},
+    {src:"./img/slide4.png", alt:"Etape 4 du fonctionnement du site", description:"Profitez bien de votre vélo, le temps de réservation restant est indiqué"}];
 
 //Création du slider
 var slider = Object.create(Slider);

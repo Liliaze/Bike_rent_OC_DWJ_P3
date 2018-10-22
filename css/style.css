@@ -5,11 +5,11 @@
 }
 
 body {
-    font-family: "Arial Narrow", serif;
+    font-family: "Arial", serif;
     font-size: calc(12px + 0.6vw);
 }
 form input {
-    font-family: "Arial Narrow", serif;
+    font-family: "Arial", serif;
     font-size: calc(12px + 0.6vw);
 }
 
@@ -43,6 +43,7 @@ h1 {
     position:relative;
     margin: auto;
     width: 80%;
+    border: 1px yellow solid;
 }
 #figureSlider, #imgSlider, #figcaptionSlider {
     margin:0;
@@ -73,7 +74,7 @@ h1 {
 figcaption {
     text-align: center;
     width: 100%;
-    background: darkseagreen;
+    background-color: aliceblue;
 }
 /*
     =========================== 2nd part ================================
@@ -91,7 +92,6 @@ figcaption {
  */
 #mapId {
     width: 100%;
-    border: 1px yellow solid;
     height: 500px;
     margin: 1%;
 }

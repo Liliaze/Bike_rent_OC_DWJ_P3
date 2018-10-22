@@ -122,10 +122,10 @@ var JCD = {
         });
     },
     createMapLeaflet: function (lat, lng) {
-        jcdThis.mapId = L.map('mapId').setView([lat, lng], 13);
+        jcdThis.mapId = L.map('mapId').setView([45.764043, 4.835659], 13);
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
+            maxZoom: 24,
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoiZGlhbmFib3VkeSIsImEiOiJjam5jNTJnY3kydDI1M2tydW9hY3M3Y2UwIn0.-_lVVTPD35gJXJg-jUZ9DA'
         }).addTo(jcdThis.mapId);
@@ -180,6 +180,15 @@ var JCD = {
         jcdThis.displayBooking();
 
     },
+    bookingInfo: function() {
+        jcdThis.bookingStation = jcdThis.currentStation;
+        jcdThis.booking = true;
+        sessionStorage.setItem('booking', 'true');
+        sessionStorage.setItem('nameStation', jcdThis.bookingStation.name);
+        sessionStorage.setItem('timeToBooking', '1200');
+        localStorage.setItem('clientName', nameInput.value);
+        localStorage.setItem('clientFirstName', firstNameInput.value);
+    },
     displayBooking: function() {
         if (sessionStorage.getItem('booking') === 'true'){
             var bookingText1 = document.createElement("p");
@@ -199,20 +208,11 @@ var JCD = {
         sessionStorage.setItem('timeToBooking', time);
         if (time > 0) {
             bookingText1.textContent = "Vélo réservé à la station " + sessionStorage.getItem('nameStation') + " par " + localStorage.getItem('clientFirstName') + " " + localStorage.getItem('clientName');
-            bookingText2.textContent = "Temps restants : " + Math.trunc(time / 60) + " min " + time % 60 + "s";
+            bookingText2.textContent = "Temps restant : " + Math.trunc(time / 60) + " min " + time % 60 + "s";
         }
         else {
             jcdThis.cancelPreviousBooking();
         }
-    },
-    bookingInfo: function() {
-        jcdThis.bookingStation = jcdThis.currentStation;
-        jcdThis.booking = true;
-        sessionStorage.setItem('booking', 'true');
-        sessionStorage.setItem('nameStation', jcdThis.bookingStation.name);
-        sessionStorage.setItem('timeToBooking', '1200');
-        localStorage.setItem('clientName', nameInput.value);
-        localStorage.setItem('clientFirstName', firstNameInput.value);
     },
     cancelPreviousBooking: function() {
         clearInterval(jcdThis.intervalAnimTextFinal);
@@ -237,22 +237,3 @@ var JCD = {
         }
     }
 };
-    //========================================== TMP, A DETRUIRE =======================
-    /*
-        saveNewDataTimeUpdate: function(reponse) {
-            //console.log("reponse[0]= " + reponse[0].last_update + " VS " + jcdThis.lastTimeDataUpdate);
-            jcdThis.newDataTimeUpdate = reponse[0].last_update;
-        },
-        updateDataTime: function () {
-          ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract="+jcdThis.contractName+"&apiKey=27ee320d96a32823835e7c985c3f2d6b5c4fc37d", jcdThis.saveNewDataTimeUpdate);
-          if (jcdThis.newDataTimeUpdate > jcdThis.lastTimeDataUpdate)
-          {
-              console.log("REFRESH !!!!!!!!!!!!!!"); // DEBUG
-              apiJCD.getContractInfo(jcdThis.contractName);
-          }
-        },
-        launchUpdate: function() {
-            jcdThis.updateData = setInterval('jcdThis.updateDataTime()', jcdThis.delay);
-        },*/
-
-
