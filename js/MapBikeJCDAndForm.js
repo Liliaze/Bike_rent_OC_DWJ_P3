@@ -46,12 +46,12 @@ var JCD = {
             '            <p id="nbBikesP">\n' +
             '                \n' +
             '            </p>\n' +
-            '            <p class="input">\n' +
-            '                <label for="name">Nom :</label>\n' +
+            '            <p class="inputP" id="inputData1">\n' +
+            '                <label for="name">Nom&nbsp:</label>\n' +
             '                <input type="text" name="name" id="nameInput" placeholder="nom" value="nom" autofocus required>\n' +
             '            </p>\n' +
-            '            <p class="input">\n' +
-            '                <label for="firstName">Prénom :</label>\n' +
+            '            <p class="inputP" id="inputData2">\n' +
+            '                <label for="firstName">Prénom&nbsp:</label>\n' +
             '                <input type="text" name="firstName" id="firstNameInput" placeholder="prénom" value="prénom" required>\n' +
             '            </p>\n' +
             '            <input id="submitForm" type="submit" value="Réserver" />\n' +
@@ -61,7 +61,6 @@ var JCD = {
             '    </div>';
         jcdThis.createButtonConfirm();
     },
-
     createButtonConfirm: function () {
         var buttonConfirm = document.createElement("input");
         buttonConfirm.type = "submit";
@@ -148,25 +147,38 @@ var JCD = {
             jcdThis.divForm.style.display = "block";
         jcdThis.first = true;
         jcdThis.currentStation = station;
-        statusP.textContent = station.status;
+        statusP.textContent = station.status === "OPEN" ? "STATION OUVERTE": "STATION FERMEE";
         statusP.style.color = station.status === "OPEN" ? "green" : "red";
         nameP.textContent = station.name;
         addressP.textContent = "Adresse : " + station.address;
-        nbStandsP.textContent = station.nbBikesStands > 1 ? station.nbBikesStands + " places" : station.nbBikesStands + "place" ;
+        nbStandsP.textContent = station.nbBikesStands > 1 ? "Capacité : " + station.nbBikesStands + " places" : "Capacité : " + station.nbBikesStands + "place" ;
         nbBikesP.textContent = station.availableBikes > 1 ? station.availableBikes + " vélos disponibles" : station.availableBikes + " vélo disponible";
         nbBikesP.style.color = station.availableBikes > 0 ? "green" : "orange";
         jcdThis.resizeWindow();
+        if (jcdThis.currentStation.status === "OPEN" && jcdThis.currentStation.availableBikes > 0) {
+            submitForm.style.display ="block";
+            inputData1.style.display = "block";
+            inputData2.style.display = "block";
+        }
+        else {
+            nbBikesP.textContent += "\nréservation impossible :'(";
+            submitForm.style.display = "none";
+            inputData1.style.display = "none";
+            inputData2.style.display = "none";
+            jcdThis.canvas.canvasElt.style.display = "none";
+            buttonConfirm.style.display = "none";
+            submitForm.style.display = "none";
+        }
     },
     clickOnSubmit: function (event) {
         event.preventDefault();
-        console.log("CLISKC CLISCK = " + this.id + "!!!!!");
         if (jcdThis.currentStation.status === "OPEN" && jcdThis.currentStation.availableBikes > 0) {
             jcdThis.canvas.canvasElt.style.display = "block";
             buttonConfirm.style.display = "block";
             submitForm.style.display = "none";
         }
         else {
-            alert("Réservation à cette station impossible, please choose an other\nSTATUS = " + jcdThis.currentStation.status + ", pas de vélo disponible" );
+            alert("Réservation à cette station impossible, merci d'an choisir une autre de couleur verte" );
         }
     },
     clickOnSubmitSecond: function (event) {
@@ -178,7 +190,6 @@ var JCD = {
         jcdThis.canvas.canvasElt.style.display = "none";
         buttonConfirm.style.display = "none";
         jcdThis.displayBooking();
-
     },
     bookingInfo: function() {
         jcdThis.bookingStation = jcdThis.currentStation;
@@ -207,8 +218,11 @@ var JCD = {
         time -= 1;
         sessionStorage.setItem('timeToBooking', time);
         if (time > 0) {
-            bookingText1.textContent = "Vélo réservé à la station " + sessionStorage.getItem('nameStation') + " par " + localStorage.getItem('clientFirstName') + " " + localStorage.getItem('clientName');
-            bookingText2.textContent = "Temps restant : " + Math.trunc(time / 60) + " min " + time % 60 + "s";
+            addSecond = (time%60) < 10 ? "0"+(time%60):(time%60);
+            bookingText1.textContent = "Vélo réservé à la station " + /-\s(.+)/gm.exec(sessionStorage.getItem('nameStation'))[1].toUpperCase()
+                + " par " + localStorage.getItem('clientFirstName').toUpperCase()
+                + " " + localStorage.getItem('clientName').toUpperCase();
+            bookingText2.textContent = "Temps restant : " + Math.trunc(time / 60) + " min " + addSecond + " sec";
         }
         else {
             jcdThis.cancelPreviousBooking();

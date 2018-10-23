@@ -19,7 +19,7 @@ var Slider = {
             '    <img id="arrowLeft" class="slider" src="./img/arrowLeft.png" alt="Une flêche vers la gauche">\n' +
             '    <figure id="figureSlider" class ="slider">\n' +
             '        <img id="imgSlider" class="slider" src="img/slide1.png" alt="slider description fonctionnement de la page">\n' +
-            '        <figcaption id="figcaptionSlider">Essaie premiere image</figcaption>\n' +
+            '        <figcaption id="figcaptionSlider"></figcaption>\n' +
             '    </figure>\n' +
             '    <img id="arrowRight" class="slider" src="./img/arrowRight.png" alt="Une flêche vers la droite">\n' +
             '    <img id="pauseButton" class="slider" src="./img/pauseButton.png" alt="Un bouton pause">\n' +
@@ -30,7 +30,6 @@ var Slider = {
     addSlide: function(src, alt, description) {
         var slide = Object.create(Slide);
         slide.init(src, alt, description);
-        slide.describe();
         othis.slider.push(slide);
       },
 
@@ -72,14 +71,12 @@ var Slider = {
         playButton.style.display = "none";
         pauseButton.style.display = "block";
         othis.intervalAnimSlider = setInterval('othis.slideAfter()', othis.delay);
-        console.log("appel à After démarré");
     },
     stopAnim: function() { //arret de l'animation auto
         othis.animStatus = false;
         pauseButton.style.display = "none";
         clearInterval(othis.intervalAnimSlider);
         playButton.style.display = "block";
-        console.log("animation stoppé");
     },
 
     //ANIMATION PROGRESSIVE DES SLIDES AU CHANGEMENT DE SLIDE

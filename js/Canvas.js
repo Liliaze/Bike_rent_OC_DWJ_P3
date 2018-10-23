@@ -10,6 +10,7 @@ var Canvas = {
         cthis.imagePencil.src = "./img/pencil.png";;
         cthis.isDrawing = false;
         cthis.eventCanvas();
+        //document.body.onload = function (){cthis.startUp();};
     },
     addCanvasInDIv: function (canvasDivId) {
         var canvasElt = document.createElement("canvas");
@@ -37,5 +38,14 @@ var Canvas = {
     },
     canvasDrawStop: function () {
         cthis.isDrawing = false;
+    },
+    //GESTION TOUCH SUR MOBILE
+    startUp: function() {
+        console.log("startevent ===");
+        cthis.canvasElt.addEventListener("touchstart", cthis.handleStart, false);
+        cthis.canvasElt.addEventListener("touchmove", cthis.handleMove, false);
+        cthis.canvasElt.addEventListener("touchend", cthis.handleEnd, false);
+        cthis.canvasElt.addEventListener("touchleave", cthis.handleEnd, false);
+        cthis.canvasElt.addEventListener("touchcancel", cthis.handleCancel, false);
     }
 };

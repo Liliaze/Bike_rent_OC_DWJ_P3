@@ -24,26 +24,14 @@ body, p {
     width: 100%;
 }
 #divForm fieldset {
+    min-height: 300px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.input {
-    display : flex;
-    flex-direction: row;
     justify-content: start;
-    align-content: center;
+    align-items: start;
 }
+#finalText {
+     width: 100%;
+ }
 
-.input label {
-    width: 20%;
-}
-.input input {
-    width: 80%;
-}
-#réserver {
-    text-align: center;
-    margin:auto;
-}

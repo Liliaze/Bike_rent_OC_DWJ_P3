@@ -6,11 +6,12 @@
 
 body {
     font-family: "Arial", serif;
-    font-size: calc(12px + 0.6vw);
+    font-size: calc(14px + 0.3vw);
+    text-align: left;
 }
 form input {
     font-family: "Arial", serif;
-    font-size: calc(12px + 0.6vw);
+    font-size: calc(14px + 0.3vw);
 }
 
 h1 {
@@ -43,9 +44,9 @@ h1 {
     position:relative;
     margin: auto;
     width: 80%;
-    border: 1px yellow solid;
+    border: 1px cadetblue solid;
 }
-#figureSlider, #imgSlider, #figcaptionSlider {
+#figureSlider, #imgSlider{
     margin:0;
     padding: 0;
     width: 100%;
@@ -75,13 +76,14 @@ figcaption {
     text-align: center;
     width: 100%;
     background-color: aliceblue;
+    margin: 10px auto 10px auto;
 }
 /*
     =========================== 2nd part ================================
  */
 #part2 {
     width: 82%;
-    margin: auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -105,35 +107,23 @@ figcaption {
 }
 #divForm fieldset {
     border-radius: 10px;
+    min-height: 480px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-p {
-    margin : 10px auto 8px auto;
-}
-.input {
-    display : flex;
-    flex-direction: row;
     justify-content: start;
-    align-content: center;
+    align-content: start;
+}
+p, .input, #submitForm, #buttonConfirm, #c {
+    margin : 6px auto 6px 2px;
 }
 
-.input label {
-    width: calc(100px + 0.6vw);
-}
-.input input {
-    width: 80%;
-}
-#réserver {
-    text-align: center;
-    margin:auto;
-}
 /*
  ===================== CANVAS =====================================
  */
 canvas { border: 1px solid #ccc;}
 #finalText {
     text-align: center;
+    border: 2px cadetblue dashed;
+    width: 80%;
+    margin: auto;
 }
